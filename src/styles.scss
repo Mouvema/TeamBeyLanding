@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --teambey-primary: #007BFF;       // A professional, vibrant blue
+    --teambey-primary-rgb: 0, 123, 255;
+    --teambey-primary-dark: #0069D9;
+
+    --teambey-secondary: #17A2B8;     // A calm, confident teal
+    --teambey-secondary-rgb: 23, 162, 184;
+
+    --teambey-accent: #20C997;        // A fresh, encouraging green/teal
+    --teambey-accent-rgb: 32, 201, 151;
+
+    --teambey-bg-dark: #0A0F18;       // A deep, modern navy blue
+    --teambey-bg-dark-rgb: 10, 15, 24;
+
+    --teambey-card-bg: #131A2A;       // A slightly lighter navy for cards
+    --teambey-card-bg-rgb: 19, 26, 42;
+
+    --teambey-text-light: #F8F9FA;
+    --teambey-text-light-rgb: 248, 249, 250;
+    --teambey-text-primary: #E9ECEF;
+    --teambey-text-secondary: #ADB5BD;
+    --teambey-text-gray: #6C757D;
+
+    --teambey-divider-color: rgba(var(--teambey-text-light-rgb), 0.1);
+    --teambey-radius-sm: 4px;
+    --teambey-radius-md: 8px;
+    --teambey-radius-lg: 16px;
+    --teambey-radius-pill: 50px;
+
+    // Glassmorphism effect variables
+    --blur-intensity: 12px;
+    --glass-bg: rgba(var(--teambey-card-bg-rgb), 0.5);
+    --glass-border: rgba(var(--teambey-primary-rgb), 0.2);
+
+    --teambey-glow-primary: 0 0 25px rgba(var(--teambey-primary-rgb), 0.3);
+    }
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--teambey-bg-dark);
+  color: var(--teambey-text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+
+body { 
+    margin: 0;
+    font-family: Roboto, 
+    "Helvetica Neue", 
+    sans-serif; }
+

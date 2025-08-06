@@ -1,0 +1,1222 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app/app.component.html
+app/app.component.spec.ts
+app/app.component.ts
+app/app.config.ts
+app/app.routes.ts
+app/landing/landing.component.html
+app/landing/landing.component.scss
+app/landing/landing.component.spec.ts
+app/landing/landing.component.ts
+index.html
+main.ts
+styles.scss
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="app/app.component.html">
+<router-outlet></router-outlet>
+</file>
+
+<file path="app/app.component.spec.ts">
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'teambey' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('teambey');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, teambey');
+  });
+});
+</file>
+
+<file path="app/app.component.ts">
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  title = 'teambey';
+}
+</file>
+
+<file path="app/app.config.ts">
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+};
+</file>
+
+<file path="app/app.routes.ts">
+import { Routes } from '@angular/router';
+import { LandingComponent } from './landing/landing.component';
+
+export const routes: Routes = [
+    { path: '', component: LandingComponent }
+];
+</file>
+
+<file path="app/landing/landing.component.html">
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="assets/logo.png" alt="TeamBey Logo" class="logo-image">
+                
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#advantage">Why TeamBey</a></li>
+                <li><a href="#target-users">For Who?</a></li>
+            </ul>
+            <button class="cta-button" (click)="onCtaClick('signup')">Join For Free</button>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Launch Your Career by Building Real-World Projects</h1>
+        <p>TeamBey is the missing link between academic knowledge and job-readiness. Gain experience, build your portfolio, and connect with companies, even without prior employment history.</p>
+        <div class="hero-buttons">
+            <button class="cta-button" (click)="onCtaClick('find_project')">Find a Project</button>
+            <button class="secondary-button" (click)="onCtaClick('learn_more')">Learn More</button>
+        </div>
+        <!-- Placeholder: Replace with an image showing project dashboards, team chats, or code -->
+        <img src="assets/teambey_in_action.png" alt="TeamBey platform showing collaborative projects" class="dashboard-preview">
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Your AI-Enhanced Path to a Dream Job</h2>
+            <p>TeamBey embeds artificial intelligence at every stage to ensure you gain the most relevant, up-to-date skills and experiences.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>AI-Powered Skill Discovery</h3>
+                <p>On signup, our AI analyzes your profile and past work to identify missing skills and recommends personalized learning paths to fill those gaps.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Intelligent Project Matching</h3>
+                <p>Our semantic matching engine connects you to projects based on your technical needs, cultural fit, and even your preferred coding style.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI-Driven Guidance</h3>
+                <p>From AI-curated interview questions to LLM-powered code reviews and test generation, get intelligent support throughout the project lifecycle.</p>
+            </div>
+             <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Smart Resume & Portfolio</h3>
+                <p>Automatically craft polished, role-tailored CVs and a rich portfolio from your project history, complete with AI-verified certifications.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Company Challenges & Gamification</h3>
+                <p>Tackle real challenges posted by companies. Compete on leaderboards, earn rewards, and gain visibility with potential employers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Real-World Experience</h3>
+                <p>Go beyond theory. Enforce and learn industry best practices like Agile, Git, and professional communication in a realistic, collaborative environment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Replaced "Integrations" with "How It Works" -->
+<section class="how-it-works" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>Your Journey from Student to Professional</h2>
+            <p>Follow a simple, structured path to gain experience and become job-ready.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">1</div>
+                <h3>Sign Up & Discover</h3>
+                <p>Create your profile. Our AI performs a skill-gap analysis and presents personalized learning paths to get you started.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">2</div>
+                <h3>Match & Interview</h3>
+                <p>Browse a feed of real and simulated projects. Apply and go through a guided AI interview process to assess your fit.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">3</div>
+                <h3>Collaborate & Build</h3>
+                <p>Join a team, use professional tools like Kanban boards and GitHub, and contribute to a real-world project from start to finish.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">4</div>
+                <h3>Certify & Launch</h3>
+                <p>Receive "Professional-Standards Certified" badges and automatically build a resume that showcases your proven skills to recruiters.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="advantage" id="advantage">
+    <div class="container">
+        <div class="section-header">
+            <h2>The TeamBey Advantage</h2>
+            <p>Why choose TeamBey over traditional internships or going it alone? We provide a modern, flexible, and accessible pathway to success.</p>
+        </div>
+        <div class="advantage-table">
+            <div class="advantage-header">
+                <div>Feature</div>
+                <div>Traditional Internships</div>
+                <div>TeamBey (AI-Enhanced)</div>
+            </div>
+            <div class="advantage-row">
+                <div class="feature-name">Open to All</div>
+                <div class="status-traditional">❌ Often Restrictive</div>
+                <div class="status-teambey">✅ Fully Accessible</div>
+            </div>
+            <div class="advantage-row">
+                <div class="feature-name">Start Anytime</div>
+                <div class="status-traditional">❌ Fixed Schedules</div>
+                <div class="status-teambey">✅ On Your Schedule</div>
+            </div>
+            <div class="advantage-row">
+                <div class="feature-name">Personalized Learning Paths</div>
+                <div class="status-traditional">❌ Generic Tasks</div>
+                <div class="status-teambey">✅ AI-Tailored for You</div>
+            </div>
+            <div class="advantage-row">
+                <div class="feature-name">AI Interview Support</div>
+                <div class="status-traditional">❌ Not Available</div>
+                <div class="status-teambey">✅ Guided & Adaptive</div>
+            </div>
+            <div class="advantage-row">
+                <div class="feature-name">Auto-Generated Tests & Reviews</div>
+                <div class="status-traditional">❌ Manual & Slow</div>
+                <div class="status-teambey">✅ Instant AI Feedback</div>
+            </div>
+            <div class="advantage-row">
+                <div class="feature-name">Smart Resume & Verified Certs</div>
+                <div class="status-traditional">❌ Manual Effort</div>
+                <div class="status-teambey">✅ Automated & Certified</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Replaced "Pricing" with "Target Users" -->
+<section class="target-users" id="target-users">
+    <div class="container">
+        <div class="section-header">
+            <h2>For Everyone in the Early-Career Ecosystem</h2>
+            <p>A unique platform designed to connect talent with opportunity.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Students & Graduates</h3>
+                <p>Gain practical experience, build a standout portfolio, and learn professional best practices to become job-ready before you even graduate.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏢</div>
+                <h3>Companies & Recruiters</h3>
+                <p>Access a pool of motivated, pre-vetted talent. Post real-world challenges to identify top candidates based on actual performance, not just resumes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧑‍🏫</div>
+                <h3>Mentors & Instructors</h3>
+                <p>Guide the next generation of tech talent. Use TeamBey as a platform to mentor students on real projects and track their progress.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Define Your Future?</h2>
+            <p>Stop waiting for experience to find you. Build it yourself. Join TeamBey today and take the first step towards your dream career.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-primary" (click)="onCtaClick('signup_final')">Start Building for Free</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="TeamBey" class="logo-image">
+                    
+                </div>
+                <p>TeamBey: The AI-enhanced platform for launching careers through real-world projects.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Platform</h3>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#">Project Feed</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 TeamBey. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">𝕏</a>
+                <a href="#" class="social-link">in</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</file>
+
+<file path="app/landing/landing.component.scss">
+/* --- Base & Animation Styles --- */
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+    transform: translateY(0);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* --- Header & Navigation --- */
+
+header {
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgba(var(--teambey-bg-dark-rgb), 0.75);
+    backdrop-filter: blur(var(--blur-intensity));
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    z-index: 1000;
+    border-bottom: 1px solid var(--teambey-divider-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--teambey-text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--teambey-text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--teambey-primary), var(--teambey-secondary));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--teambey-text-light);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.cta-button {
+    background: linear-gradient(90deg, var(--teambey-primary), var(--teambey-accent));
+    color: var(--teambey-text-light);
+    border: none;
+    padding: 0.8rem 2.2rem;
+    border-radius: var(--teambey-radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(var(--teambey-primary-rgb), 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(var(--teambey-primary-rgb), 0.4);
+}
+
+
+/* --- Hero Section --- */
+
+.hero {
+    padding: 12rem 0 8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(var(--teambey-primary-rgb), 0.05) 0%,
+        rgba(var(--teambey-accent-rgb), 0.05) 50%,
+        transparent 70%
+    );
+    z-index: -1;
+    animation: rotate 90s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(120deg, var(--teambey-primary), var(--teambey-secondary), var(--teambey-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--teambey-text-secondary);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.secondary-button {
+    background-color: transparent;
+    color: var(--teambey-text-light);
+    border: 1px solid var(--teambey-divider-color);
+    padding: 0.8rem 2.2rem;
+    border-radius: var(--teambey-radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    background-color: rgba(var(--teambey-card-bg-rgb), 0.3);
+}
+
+.secondary-button:hover {
+    background-color: rgba(var(--teambey-card-bg-rgb), 0.5);
+    border-color: var(--teambey-secondary);
+    box-shadow: 0 0 15px rgba(var(--teambey-secondary-rgb), 0.3);
+    transform: translateY(-3px);
+}
+
+.dashboard-preview {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: var(--teambey-radius-lg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border: 1px solid var(--teambey-divider-color);
+    position: relative;
+    transform: perspective(1200px) rotateX(7deg);
+    transition: all 0.5s ease-out;
+}
+
+.dashboard-preview:hover {
+    transform: perspective(1500px) rotateX(0deg) scale(1.02);
+    box-shadow: 0 25px 60px rgba(var(--teambey-primary-rgb), 0.3);
+}
+
+/* --- General Section Styling --- */
+
+.features, .how-it-works, .testimonials, .target-users {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--teambey-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teambey-primary), var(--teambey-secondary));
+    border-radius: var(--teambey-radius-sm);
+}
+
+.section-header p {
+    color: var(--teambey-text-secondary);
+    max-width: 650px;
+    margin: 1rem auto 0;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.feature-card {
+    padding: 2.5rem;
+    border-radius: var(--teambey-radius-lg);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-intensity));
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    border-color: rgba(var(--teambey-primary-rgb), 0.5);
+    background-color: rgba(var(--teambey-card-bg-rgb), 0.75);
+}
+
+.feature-icon {
+    background: linear-gradient(135deg, var(--teambey-primary), var(--teambey-accent));
+    color: var(--teambey-text-light);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    position: relative;
+    box-shadow: 0 0 25px rgba(var(--teambey-primary-rgb), 0.4);
+}
+
+.feature-card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--teambey-text-light);
+}
+
+.feature-card p {
+    color: var(--teambey-text-secondary);
+    line-height: 1.7;
+}
+
+/* --- Testimonials Section --- */
+
+.testimonials-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 1.5rem 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--teambey-primary) var(--teambey-bg-dark);
+}
+
+.testimonial-card {
+    flex: 0 0 clamp(300px, 80vw, 380px);
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-intensity));
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    padding: 2.5rem;
+    border-radius: var(--teambey-radius-lg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    scroll-snap-align: start;
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(var(--teambey-primary-rgb), 0.2);
+    border-color: rgba(var(--teambey-primary-rgb), 0.4);
+}
+
+.testimonial-text {
+    margin-bottom: 1.75rem;
+    font-style: italic;
+    color: var(--teambey-text-primary);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--teambey-primary);
+}
+
+.author-info h4 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--teambey-text-light);
+}
+
+.author-info p {
+    color: var(--teambey-text-secondary);
+    font-size: 0.9rem;
+}
+
+
+/* --- CTA Section --- */
+
+.cta-section {
+    padding: 6rem 0;
+    text-align: center;
+    background-color: var(--teambey-card-bg); /* Give it a distinct background */
+    border-top: 1px solid var(--teambey-divider-color);
+    border-bottom: 1px solid var(--teambey-divider-color);
+}
+
+.cta-content h2 {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--teambey-text-light);
+}
+
+.cta-content p {
+    margin-bottom: 2.5rem;
+    font-size: 1.15rem;
+    color: var(--teambey-text-secondary);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cta-primary, .cta-secondary {
+    padding: 1rem 2.5rem;
+    border-radius: var(--teambey-radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.cta-primary {
+    background: linear-gradient(90deg, var(--teambey-primary), var(--teambey-accent));
+    color: var(--teambey-text-light);
+    border: none;
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(var(--teambey-primary-rgb),0.3);
+}
+
+/* --- Footer --- */
+
+footer {
+    background-color: #000000;
+    color: var(--teambey-text-secondary);
+    padding: 5rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.footer-brand {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+    @media (min-width: 768px) {
+        grid-column: span 2;
+    }
+}
+
+.footer-brand .logo {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--teambey-text-light);
+}
+
+.footer-brand p {
+    color: var(--teambey-text-secondary);
+    max-width: 400px;
+    line-height: 1.7;
+}
+
+.footer-links h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--teambey-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.85rem;
+}
+
+.footer-links ul li a {
+    color: var(--teambey-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--teambey-primary);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    padding-top: 3rem;
+    border-top: 1px solid var(--teambey-divider-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(var(--teambey-text-light-rgb), 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--teambey-text-secondary);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.social-link:hover {
+    background-color: var(--teambey-primary);
+    color: var(--teambey-text-light);
+    transform: translateY(-3px);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .nav-links {
+        display: none; // Assumes a mobile burger menu would be implemented
+    }
+    header nav .cta-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.8rem;
+    }
+    .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-brand p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* --- Advantage Section (Testimonial Replacement) --- */
+
+.advantage {
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--teambey-bg-dark); // Or a slightly different shade
+}
+
+.advantage-table {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-intensity));
+    -webkit-backdrop-filter: blur(var(--blur-intensity));
+    border-radius: var(--teambey-radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+    font-size: 1.05rem;
+}
+
+.advantage-header, .advantage-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--teambey-divider-color);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+}
+
+.advantage-header {
+    background-color: rgba(var(--teambey-card-bg-rgb), 0.5);
+    color: var(--teambey-text-light);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.25rem 1.5rem;
+}
+
+.advantage-row:last-child {
+    border-bottom: none;
+}
+
+.advantage-row .feature-name {
+    font-weight: 500;
+    color: var(--teambey-text-primary);
+    
+    @media (max-width: 768px) {
+      font-weight: 700;
+      border-bottom: 1px dashed var(--teambey-divider-color);
+      padding-bottom: 1rem;
+      margin-bottom: 0.5rem;
+    }
+}
+
+.advantage-row .status-traditional {
+    color: var(--teambey-text-gray);
+
+    @media (max-width: 768px) {
+      margin-bottom: 0.5rem;
+    }
+}
+
+.advantage-row .status-teambey {
+    color: var(--teambey-accent);
+    font-weight: 600;
+}
+
+.advantage-row .status-teambey::before, .advantage-row .status-traditional::before {
+    margin-right: 0.5rem;
+}
+</file>
+
+<file path="app/landing/landing.component.spec.ts">
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { LandingComponent } from './landing.component';
+
+describe('LandingComponent', () => {
+  let component: LandingComponent;
+  let fixture: ComponentFixture<LandingComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [LandingComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(LandingComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+</file>
+
+<file path="app/landing/landing.component.ts">
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-landing',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.scss'],
+})
+export class LandingComponent implements OnInit, AfterViewInit {
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    // Initialization logic can go here
+  }
+
+  ngAfterViewInit(): void {
+    // Run DOM-related logic after the view is ready
+    this.addScrollAnimations();
+  }
+
+  /**
+   * Adds scroll-triggered fade-in animations to elements.
+   */
+  private addScrollAnimations(): void {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1 // Trigger when 10% of the element is visible
+    };
+
+    const animateOnScroll = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          entry.target.classList.remove('animate-on-scroll');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+    // Select all elements that should have the animation
+    const animatedElements = document.querySelectorAll(
+      '.hero h1, .hero p, .hero .hero-buttons, .hero .dashboard-preview, .section-header, .feature-card, .testimonial-card, .cta-content'
+    );
+
+    animatedElements.forEach(element => {
+      element.classList.add('animate-on-scroll');
+      observer.observe(element);
+    });
+  }
+
+  /**
+   * Handles Call-To-Action button clicks for navigation.
+   * @param ctaType A string identifying the clicked CTA.
+   */
+  onCtaClick(ctaType: string): void {
+    console.log(`CTA clicked: ${ctaType}`);
+    
+    // Navigate based on the button's purpose
+    switch (ctaType) {
+      case 'signup':
+      case 'signup_final':
+        // Navigate to the user registration page
+        this.router.navigate(['/register']);
+        break;
+      case 'find_project':
+        // Navigate to the page that lists available projects
+        this.router.navigate(['/projects']);
+        break;
+      case 'learn_more':
+        // Smooth scroll to the 'features' section
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+        break;
+    }
+  }
+}
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Teambey</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+</body>
+</html>
+</file>
+
+<file path="main.ts">
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+</file>
+
+<file path="styles.scss">
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --teambey-primary: #007BFF;       // A professional, vibrant blue
+    --teambey-primary-rgb: 0, 123, 255;
+    --teambey-primary-dark: #0069D9;
+
+    --teambey-secondary: #17A2B8;     // A calm, confident teal
+    --teambey-secondary-rgb: 23, 162, 184;
+
+    --teambey-accent: #20C997;        // A fresh, encouraging green/teal
+    --teambey-accent-rgb: 32, 201, 151;
+
+    --teambey-bg-dark: #0A0F18;       // A deep, modern navy blue
+    --teambey-bg-dark-rgb: 10, 15, 24;
+
+    --teambey-card-bg: #131A2A;       // A slightly lighter navy for cards
+    --teambey-card-bg-rgb: 19, 26, 42;
+
+    --teambey-text-light: #F8F9FA;
+    --teambey-text-light-rgb: 248, 249, 250;
+    --teambey-text-primary: #E9ECEF;
+    --teambey-text-secondary: #ADB5BD;
+    --teambey-text-gray: #6C757D;
+
+    --teambey-divider-color: rgba(var(--teambey-text-light-rgb), 0.1);
+    --teambey-radius-sm: 4px;
+    --teambey-radius-md: 8px;
+    --teambey-radius-lg: 16px;
+    --teambey-radius-pill: 50px;
+
+    // Glassmorphism effect variables
+    --blur-intensity: 12px;
+    --glass-bg: rgba(var(--teambey-card-bg-rgb), 0.5);
+    --glass-border: rgba(var(--teambey-primary-rgb), 0.2);
+
+    --teambey-glow-primary: 0 0 25px rgba(var(--teambey-primary-rgb), 0.3);
+    }
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--teambey-bg-dark);
+  color: var(--teambey-text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+
+body { 
+    margin: 0;
+    font-family: Roboto, 
+    "Helvetica Neue", 
+    sans-serif; }
+</file>
+
+</files>
